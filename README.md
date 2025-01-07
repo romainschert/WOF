@@ -1,5 +1,7 @@
 # World of Flashcards
 
+![](./images/WOF.png)
+
 Bienvenue dans World Of Flashcards (WOF), un environnement dans lequel vous allez apprendre puis démontrer votre maîtrise du framework [AdonisJS](https://adonisjs.com/) !
 
 Vous y serez accompagné par votre prof non joueur (PnJ) auquel vous pourrez demander conseil et assistance, et à qui vous remettrez vos quêtes achevées pour qu'il vous attribue les points d'expérience (px) qui vous feront gagner des niveaux.
