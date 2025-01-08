@@ -17,7 +17,7 @@ Et foncez dans le tas ...
 - Tous les élèves ont un compte sur l'infra IceScrum ETML (https://etml.icescrum.com) et __pas__ sur le IceScrum public (https://www.icescrum.com/). Leur nom d'utilisateur doit permettre de les identifier sans ambiguité (p.ex: `Lucas 2` n'est pas OK)
 - Importe le projet `wofmaster.zip` dans IceScrum. Tu vas devoir donner une nouvelle clé de projet, car elle existe déjà. Attention: 10 caractères max, que des chiffres ou des lettres.
 - Juste pour éviter les confusions: personnalise le nom du projet (p. ex. avec tes initiales)
-- Dans les settings du projet, crée une nouvelle équipe qui contient tout tes élèves et associe-là au projet
+- Dans les settings du projet, crée une nouvelle équipe qui contient tout tes élèves et associe-là au projet. C'est cela qui permettra aux élèves de venir chercher leurs quêtes.
 
 ### Installation (PnJ+joueurs)
 
@@ -29,7 +29,7 @@ Et foncez dans le tas ...
   - Nom de projet: `WOF - III`, où `III` sont vos initiales (p.ex: `GBY` pour Gérard Bellamy)
   - Clé de projet: `WOFIIIXXXX`, où `III` sont vos initiales et `YYYY` est l'année en cours. Exemple: `WOFGBY2024`. Notez cette clé, vous allez en avoir besoin plus loin.
   - Vous seul en tant qu'équipe dans `Team and projects members`
-  - Votre prof en tant que Product Owner
+  - Votre prof en tant que Product Owner. C'est cela qui lui permettra de vous donner vos px.
   - La case `Disable Estimation` est cochée dans `Project Configuration > Practices`
   - La date de début du projet est la date de début du trimestre
   - L'état `In Review` est activé dans `Project Configuration > Story Workflow`
