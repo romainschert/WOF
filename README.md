@@ -26,29 +26,29 @@ Et foncez dans le tas ...
 3. Tous: Extrayez le dossier `WOF-main` de ce zip et placez-le dans vos dossiers de travail sous le nom de `WOF` 
 4. Tous: Connectez-vous à https://etml.icescrum.com
 5. Joueurs: Créez un projet dans IceScrum avec
-  - Nom de projet: `WOF - III`, où `III` sont vos initiales (p.ex: `GBY` pour Gérard Bellamy)
-  - Clé de projet: `WOFIIIXXXX`, où `III` sont vos initiales et `YYYY` est l'année en cours. Exemple: `WOFGBY2024`. Notez cette clé, vous allez en avoir besoin plus loin.
-  - Vous seul en tant qu'équipe dans `Team and projects members`
-  - Votre prof en tant que Product Owner. C'est cela qui lui permettra de vous donner vos px.
-  - La case `Disable Estimation` est cochée dans `Project Configuration > Practices`
-  - La date de début du projet est la date de début du trimestre
-  - L'état `In Review` est activé dans `Project Configuration > Story Workflow`
-  - Une Release `MAIN` dont les dates couvrent le trimestre entier
-  - Un sprint **activé** qui dure toute la release
+    - Nom de projet: `WOF - III`, où `III` sont vos initiales (p.ex: `GBY` pour Gérard Bellamy)
+    - Clé de projet: `WOFIIIXXXX`, où `III` sont vos initiales et `YYYY` est l'année en cours. Exemple: `WOFGBY2024`. Notez cette clé, vous allez en avoir besoin plus loin.
+    - Vous seul en tant qu'équipe dans `Team and projects members`
+    - Votre prof en tant que Product Owner. C'est cela qui lui permettra de vous donner vos px.
+    - La case `Disable Estimation` est cochée dans `Project Configuration > Practices`
+    - La date de début du projet est la date de début du trimestre
+    - L'état `In Review` est activé dans `Project Configuration > Story Workflow`
+    - Une Release `MAIN` dont les dates couvrent le trimestre entier
+    - Un sprint **activé** qui dure toute la release
 6. PnJ: Collecte toutes les clés de projets créées par les joueurs
 7. Tous: dans les détails de votre compte IceScrum (cliquez sur l'avatar, puis MyAccount > Account), sélectionnez l'onglet `API tokens`. Créez un token nommé 'WOF', copiez-le dans le presse-papier
 8. Quittez IceScrum et ouvrez le dossier WOF
 9. Joueurs: 
-  - Ouvrez le fichier `Player Config.html`.
-  - Collez le token que vous venez de mettre dans le presse-papier
-  - Saisissez la clé de projet (`WOFGBY2024`)
-  - Saisissez la clé du projet de votre PnJ
-  - Téléchargez le fichier de configuration
-  - Déplacez-le dans votre dossier WOF
+    - Ouvrez le fichier `Player Config.html`.
+    - Collez le token que vous venez de mettre dans le presse-papier
+    - Saisissez la clé de projet (`WOFGBY2024`)
+    - Saisissez la clé du projet de votre PnJ
+    - Téléchargez le fichier de configuration
+    - Déplacez-le dans votre dossier WOF
 10. PnJ:
-  - Renomme `config.js.example` en `config.js`
-  - Colle ton token dans le fichier
-  - Place toutes les clés de projet dans le tableau `playersProjectIds`
+    - Renomme `config.js.example` en `config.js`
+    - Colle ton token dans le fichier
+    - Place toutes les clés de projet dans le tableau `playersProjectIds`
 
 Votre configuration est achevée si vous obtenez quelque chose comme ceci en ouvrant le fichier `Player.html`
 
