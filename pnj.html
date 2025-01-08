@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Flashcards Prof</title>
+    <title>WOF Prof</title>
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       rel="stylesheet"
@@ -129,7 +129,7 @@
           </li>
           <li>
             Un tableau contenant les codes Icescrum des projets que vous voulez suivre, genre:
-            <span class="code">projectIds = ['XXXXXX','YYYYYY']</span>
+            <span class="code">playerProjectIds = ['XXXXXX','YYYYYY']</span>
             <p class="small text-secondary">
               Vous trouverez la valeur à mettre à la place des XXXXXX dans la barre d'adresse de votre navigateur quand
               vous êtes sur votre projet Icescrum (https://icescrum.cpnv.ch/p/XXXXXX/#/project)
@@ -181,7 +181,7 @@
   // Init dropdown list from either an array of project IDs or a single ID
   if (typeof iceScrumToken == "undefined") {
     divBadConfig.classList.remove("d-none");
-  } else if (typeof projectIds !== "undefined") {
+  } else if (typeof playerProjectIds !== "undefined") {
     loadProjects();
   } else {
     divBadConfig.classList.remove("d-none");
@@ -189,7 +189,7 @@
 
   var playerStats;
   async function loadProjects() {
-    for (projectId of projectIds) {
+    for (projectId of playerProjectIds) {
       playerStats = { px: 0, nbProgress: 0, nbReview: 0, nbDone: 0 };
       await loadProject(projectId);
     }
