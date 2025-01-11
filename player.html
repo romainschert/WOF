@@ -1,174 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>P_BULLE</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="config.js"></script>
+    <style>
+      .code {
+        font-family: "Courier New";
+        font-weight: bolder;
+        padding: 4px;
+        margin: 2px;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <title>P_BULLE</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
-    type="text/css" />
-  <script src="config.js"></script>
-  <style>
-    .code {
-      font-family: "Courier New";
-      font-weight: bolder;
-      padding: 4px;
-      margin: 2px;
-    }
+      .box {
+        margin: 2px;
+        padding: 2px;
+        width: 40px;
+        height: 40px;
+        border: 1px solid grey;
+      }
 
-    .box {
-      margin: 2px;
-      padding: 2px;
-      width: 40px;
-      height: 40px;
-      border: 1px solid grey;
-    }
+      .inprogress {
+        background-color: rgb(198, 239, 198);
+      }
 
-    .inprogress {
-      background-color: rgb(198, 239, 198);
-    }
+      .inreview {
+        background-color: rgb(236, 239, 198);
+      }
 
-    .inreview {
-      background-color: rgb(236, 239, 198);
-    }
+      .done {
+        background-color: rgb(240, 240, 240);
+      }
 
-    .done {
-      background-color: rgb(240, 240, 240);
-    }
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        /* Place l'élément en arrière-plan */
 
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      /* Place l'élément en arrière-plan */
+        background-image: url("images/background.png");
+        background-repeat: repeat;
+        opacity: 0.1;
+        /* Contrôle l'opacité de l'élément */
+      }
 
-      background-image: url("images/background.png");
-      background-repeat: repeat;
-      opacity: 0.1;
-      /* Contrôle l'opacité de l'élément */
-    }
+      body {
+        background-color: azure;
+      }
 
-    body {
-      background-color: azure;
-    }
+      .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
 
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 10;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-    }
+      .popup-content {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+      }
 
-    .popup-content {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      text-align: center;
-    }
+      .dialog-content {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: left;
+      }
 
-    .dialog-content {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      text-align: left;
-    }
+      #inpComment {
+        width: 400px;
+      }
 
-    #inpComment {
-      width: 400px;
-    }
+      .officon {
+        float: right;
+        margin-top: -40px;
+        width: 64px;
+        height: 64px;
+      }
 
-    .officon {
-      float: right;
-      margin-top: -40px;
-      width: 64px;
-      height: 64px;
-    }
+      .test_state_1 {
+      }
 
-    .test_state_1 {}
+      .test_state_5 {
+        font-weight: bold;
+        color: red;
+      }
 
-    .test_state_5 {
-      font-weight: bold;
-      color: red;
-    }
+      .test_state_10 {
+        font-weight: bold;
+        color: green;
+      }
 
-    .test_state_10 {
-      font-weight: bold;
-      color: green;
-    }
+      .ballbadge {
+        width: 80px;
+      }
+    </style>
+  </head>
 
-    .ballbadge {
-      width: 80px;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="pl-5 m-2 mt-4 text-center">
-    <div id="divBadConfig" class="container d-none text-left m-5 p-3 bg-warning">
-      <h3>Oooops!!</h3>
-      <p>
-        Si vous voyez ce texte, c'est que cette page a besoin d'informations compémentaires de votre part pour
-        fonctionner.
-      </p>
-      <p>
-        Il faut un fichier nommé <span class="code">config.js</span> dans le dossier de cette page.
-      </p>
-      <p>Dans ce fichier, vous devez mettre:</p>
-      <ol>
-        <li>
-          Votre token d'accès à l'API Icescrum. Cela donne quelque chose genre:
-          <span class="code">var iceScrumToken = '91030e0ea9a9ab58...'</span>
-          <p class="small text-secondary">
-            Vous générez ou retrouvez votre token dans votre profil IceScrum ("My Account") sous l'onglet 'API token'
-          </p>
-        </li>
-        <li>
-          Votre code joueur dans `projectId`, soit:
-          <span class="code">projectId = 'XXXXXX'</span>
-        </li>
-      </ol>
+  <body>
+    <div class="pl-5 m-2 mt-4 text-center">
+      <div id="divBadConfig" class="container d-none text-left m-5 p-3 bg-warning">
+        <h3>Oooops!!</h3>
+        <p>
+          Si vous voyez ce texte, c'est que cette page a besoin d'informations compémentaires de votre part pour
+          fonctionner.
+        </p>
+        <p>Il faut un fichier nommé <span class="code">config.js</span> dans le dossier de cette page.</p>
+        <p>Dans ce fichier, vous devez mettre:</p>
+        <ol>
+          <li>
+            Votre token d'accès à l'API Icescrum. Cela donne quelque chose genre:
+            <span class="code">var iceScrumToken = '91030e0ea9a9ab58...'</span>
+            <p class="small text-secondary">
+              Vous générez ou retrouvez votre token dans votre profil IceScrum ("My Account") sous l'onglet 'API token'
+            </p>
+          </li>
+          <li>
+            Votre code joueur dans `projectId`, soit:
+            <span class="code">projectId = 'XXXXXX'</span>
+          </li>
+        </ol>
+      </div>
     </div>
-  </div>
-  <div class="row ml-5">
-    <h1 id="heaProjectTitle" class="mr-5"></h1>
-    <div id="divLevel" class="ml-5 mr-5"></div>
-    <div class="ml-5">
-      <input class="filteringCheckbox" data-forstate="0" type="checkbox" checked /> A prendre<br />
-      <input class="filteringCheckbox" data-forstate="5" type="checkbox" checked /> En cours<br />
-      <input class="filteringCheckbox" data-forstate="6" type="checkbox" checked /> En attente de validation<br />
-      <input class="filteringCheckbox" data-forstate="7" type="checkbox" checked /> Terminées
+    <div class="row ml-5">
+      <h1 id="heaProjectTitle" class="mr-5"></h1>
+      <div id="divLevel" class="ml-5 mr-5"></div>
+      <div class="ml-5">
+        <input class="filteringCheckbox" data-forstate="0" type="checkbox" checked /> A prendre<br />
+        <input class="filteringCheckbox" data-forstate="5" type="checkbox" checked /> En cours<br />
+        <input class="filteringCheckbox" data-forstate="6" type="checkbox" checked /> En attente de validation<br />
+        <input class="filteringCheckbox" data-forstate="7" type="checkbox" checked /> Terminées
+      </div>
     </div>
-  </div>
-  <div id="output" style="margin: 30px"></div>
-  <div style="font-size: x-small">V1.0</div>
+    <div id="output" style="margin: 30px"></div>
+    <div style="font-size: x-small">V1.0</div>
 
-  <!-- ============= Popup ================ -->
-  <div id="popup" class="popup shadow">
-    <div class="popup-content">
-      <span id="popupText" class="text-left"></span>
-      <button class="btn btn-sm btn-primary" id="reloadButton">Ok</button>
+    <!-- ============= Popup ================ -->
+    <div id="popup" class="popup shadow">
+      <div class="popup-content">
+        <span id="popupText" class="text-left"></span>
+        <button class="btn btn-sm btn-primary" id="reloadButton">Ok</button>
+      </div>
     </div>
-  </div>
 
-  <!-- ============= Comments dialog ================ -->
-  <div id="commentsDialog" class="popup shadow">
-    <div class="dialog-content">
-      <input type="text" id="inpComment" placeholder="Nouveau commentaire" />
-      <div id="cmdAddComment" class="btn btn-sm btn-primary">Ok</div>
-      <div id="dialogText" class="text-left"></div>
+    <!-- ============= Comments dialog ================ -->
+    <div id="commentsDialog" class="popup shadow">
+      <div class="dialog-content">
+        <input type="text" id="inpComment" placeholder="Nouveau commentaire" />
+        <div id="cmdAddComment" class="btn btn-sm btn-primary">Ok</div>
+        <div id="dialogText" class="text-left"></div>
+      </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
@@ -224,8 +224,8 @@
           .catch(function (erreur) {
             alert(
               "Erreur de connexion au serveur IceScrum\n\nSi internet est ok (=vous pouvez atteindre " +
-              API_base_url +
-              " avec votre navigateur), alors c'est probablement que le code du projet est faux ou que votre token est pourri"
+                API_base_url +
+                " avec votre navigateur), alors c'est probablement que le code du projet est faux ou que votre token est pourri"
             );
             window.close();
           });
@@ -261,8 +261,8 @@
       .catch(function (erreur) {
         alert(
           "Erreur de connexion au serveur IceScrum\n\nSi internet est ok (=vous pouvez atteindre " +
-          API_base_url +
-          " avec votre navigateur), alors c'est probablement votre token est pourri ou que le projet de base (FLASHCARDS) n'est pas atteignable"
+            API_base_url +
+            " avec votre navigateur), alors c'est probablement votre token est pourri ou que le projet de base (FLASHCARDS) n'est pas atteignable"
         );
         window.close();
       });
@@ -308,8 +308,8 @@
         console.log(erreur);
         alert(
           "Erreur de connexion au serveur IceScrum\n\nSi internet est ok (=vous pouvez atteindre " +
-          API_base_url +
-          " avec votre navigateur), alors c'est probablement que le code du projet est faux ou que votre token est pourri"
+            API_base_url +
+            " avec votre navigateur), alors c'est probablement que le code du projet est faux ou que votre token est pourri"
         );
         //window.close();
       });
@@ -379,7 +379,7 @@
           btnHelp.dataset.story_id = playerStory.id;
           btnHelp.addEventListener("click", (evt) => {
             playerStory = playerStories.find((s) => s.id == parseInt(evt.target.dataset.story_id));
-            openPopup(playerStory.notes_html);
+            openPopup(playerStory.notes);
           });
           tests.appendChild(btnHelp);
       }
@@ -474,7 +474,7 @@
             await copyTests(storysource, response.data);
             // the story must be planned in order allow marking it as in review
             await planStory(response.data.id);
-            openPopup(storysource.notes_html);
+            openPopup(storysource.notes);
           })
           .catch(function (error) {
             alert(error.response.data[0].text);
@@ -556,6 +556,7 @@
   // popup management
   // Add a click event listener to the "Open Popup" button
   function openPopup(html) {
+    console.log(html);
     popup.style.display = "flex"; // Show the popup
     // Change the text inside the popup
     popupText.innerHTML = html;
@@ -587,13 +588,13 @@
       if (comment.commentable.id == e.target.dataset.story) {
         commentsString.push(
           "<p>(" +
-          comment.dateCreated.substring(0, 16).replace("T", " ") +
-          ", " +
-          comment.poster.firstName +
-          " " +
-          comment.poster.lastName +
-          ") " +
-          comment.body_html.substring(3)
+            comment.dateCreated.substring(0, 16).replace("T", " ") +
+            ", " +
+            comment.poster.firstName +
+            " " +
+            comment.poster.lastName +
+            ") " +
+            comment.body_html.substring(3)
         );
       }
     }
