@@ -455,6 +455,7 @@
         return response.json();
       })
       .then(async function (storysource) {
+        delete storysource.dependsOn; // because the dependency story doesn't have the same id in the target project
         delete storysource.feature; // because there's no matching feature in the destination project
         // copy the story with axios, works where fetch fails for an unknown reason
         let action = API_project_url + "/story/" + "?icescrum-token=" + iceScrumToken;
