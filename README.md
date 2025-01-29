@@ -27,7 +27,7 @@ Et foncez dans le tas ...
 4. Tous: Connectez-vous à https://etml.icescrum.com
 5. Joueurs: Créez un projet dans IceScrum avec
     - Nom de projet: `WOF - III`, où `III` sont vos initiales (p.ex: `GBY` pour Gérard Bellamy)
-    - Clé de projet: `WOFIIIXXXX`, où `III` sont vos initiales et `YYYY` est l'année en cours. Exemple: `WOFGBY2024`. Notez cette clé, vous allez en avoir besoin plus loin.
+    - Clé de projet: `WOFIIIXXXX`, où `III` sont vos initiales et `YYYY` est l'année scolaire en cours. Exemple: `WOFGBY2024`, même en février 2025 vu que l'année scolaire a débuté en 2024. Notez cette clé, vous allez en avoir besoin plus loin.
     - Vous seul en tant qu'équipe dans `Team and projects members`
     - Votre prof en tant que Product Owner. C'est cela qui lui permettra de vous donner vos px.
     - La case `Disable Estimation` est cochée dans `Project Configuration > Practices`
